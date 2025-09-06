@@ -7,11 +7,11 @@ REM Renombrar archivo de imagen
 set /a contador=%random% %% 1000
 REM for %%f in ("Use_normal copy*.jpg") do ren "%%f" "Use_normal copy%contador%.jpg"
 
-REM Generar lista actualizada de archivos en el HTML
-echo Actualizando lista de archivos en index.html...
-node update_file_list.js
+REM Generar lista actualizada de archivos
+echo Actualizando lista de archivos...
+call generate_file_list.cmd
 
 git add .
 git commit -m "Auto update - %fechaHora%"
-git push -u origin master
+REM git push -u origin master
 echo Script completado
