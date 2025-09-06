@@ -132,7 +132,9 @@
                 if (isImage(fileName)) {
                     mediaContent = `
                     <img src="${fileName}" alt="${fileName}" class="media-preview" onerror="this.style.display='none'">
-                    <div class="file-name">${fileName}</div>
+                    <div class="file-name">
+                        <a href="./${fileName}" target="_blank" rel="noopener" style="display:inline-block;padding:6px 16px;background:#007bff;color:#fff;border:none;border-radius:4px;text-decoration:none;cursor:pointer;font-weight:500;transition:background 0.2s;">${fileName}</a>
+                        </div>
                     `;
                 } else if (isVideo(fileName)) {
                     mediaContent = `
