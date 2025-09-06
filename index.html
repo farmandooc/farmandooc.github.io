@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido de la Carpeta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s;
+        }
+        .file-item:hover {
+            background-color: #f0f0f0;
+        }
+        .file-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .file-name {
+            font-weight: bold;
+            color: #555;
+        }
+        .image-preview {
+            max-width: 200px;
+            max-height: 150px;
+            margin: 10px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .refresh-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .refresh-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contenido de la Carpeta</h1>
+        <button class="refresh-btn" onclick="loadFiles()">🔄 Actualizar</button>
+        <ul class="file-list" id="fileList">
+            <!-- Los archivos se cargarán dinámicamente aquí -->
+        </ul>
+    </div>
+
+    <script>
+        // Lista estática de archivos (se actualizará dinámicamente)
+        const files = [
+            'Admin_user.jpg',
+            'Use_normal copy437.jpg', 
+            'Use_normal.jpg',
+            'index.html',
+            'script_update.cmd'
+        ];
+
+        function getFileIcon(fileName) {
+            const ext = fileName.split('.').pop().toLowerCase();
+            switch(ext) {
+                case 'jpg':
+                case 'jpeg':
+                case 'png':
+                case 'gif':
+                    return '🖼️';
+                case 'html':
+                case 'htm':
+                    return '🌐';
+                case 'cmd':
+                case 'bat':
+                    return '⚡';
+                case 'js':
+                    return '📜';
+                case 'css':
+                    return '🎨';
+                default:
+                    return '📄';
+            }
+        }
+
+        function isImage(fileName) {
+            const ext = fileName.split('.').pop().toLowerCase();
+            return ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].includes(ext);
+        }
+
+        function loadFiles() {
+            const fileList = document.getElementById('fileList');
+            fileList.innerHTML = '';
+
+            files.forEach(fileName => {
+                const listItem = document.createElement('li');
+                listItem.className = 'file-item';
+                
+                const icon = getFileIcon(fileName);
+                const fileContent = `
+                    <span class="file-icon">${icon}</span>
+                    <div>
+                        <div class="file-name">${fileName}</div>
+                        ${isImage(fileName) ? `<img src="${fileName}" alt="${fileName}" class="image-preview" onerror="this.style.display='none'">` : ''}
+                    </div>
+                `;
+                
+                listItem.innerHTML = fileContent;
+                fileList.appendChild(listItem);
+            });
+
+            // Actualizar timestamp
+            const timestamp = document.getElementById('timestamp');
+            if (timestamp) {
+                timestamp.textContent = new Date().toLocaleString('es-ES');
+            } else {
+                const timestampDiv = document.createElement('div');
+                timestampDiv.id = 'timestamp';
+                timestampDiv.style.textAlign = 'center';
+                timestampDiv.style.marginTop = '20px';
+                timestampDiv.style.color = '#666';
+                timestampDiv.textContent = `Última actualización: ${new Date().toLocaleString('es-ES')}`;
+                document.querySelector('.container').appendChild(timestampDiv);
+            }
+        }
+
+        // Cargar archivos al inicio
+        document.addEventListener('DOMContentLoaded', loadFiles);
+
+        // Auto-refresh cada 30 segundos
+        setInterval(loadFiles, 30000);
+    </script>
+</body>
+</html>
