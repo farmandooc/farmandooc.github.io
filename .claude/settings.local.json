@@ -3,7 +3,8 @@
     "allow": [
       "Bash(script_update.cmd)",
       "Bash(cmd /c:*)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(del script_update.cmd)"
     ],
     "deny": [],
     "ask": []
