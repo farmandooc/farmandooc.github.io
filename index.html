@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -81,17 +81,10 @@
         </ul>
     </div>
 
+    <!-- Cargar lista de archivos externa -->
+    <script src="files.js"></script>
+    
     <script>
-        // Lista estática de archivos (se actualizará dinámicamente)        const files = [
-            'Admin_user.jpg',
-            'index.html',
-            'script_update.cmd',
-            'servidor_local.cmd',
-            'servidor_node.cmd',
-            'Use_normal copy1.jpg',
-            'Use_normal.jpg'
-        ];
-
         function isMediaFile(fileName) {
             const ext = fileName.split('.').pop().toLowerCase();
             return ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg', 'mp4', 'mov', 'avi', 'mp3', 'wav', 'ogg'].includes(ext);
@@ -116,6 +109,12 @@
             const mediaGallery = document.getElementById('mediaGallery');
             mediaGallery.innerHTML = '';
 
+            // Verificar que la lista de archivos esté cargada
+            if (typeof files === 'undefined') {
+                mediaGallery.innerHTML = '<li style="text-align: center; color: #666; padding: 40px;">Error: No se pudo cargar la lista de archivos</li>';
+                return;
+            }
+
             // Filtrar solo archivos multimedia
             const mediaFiles = files.filter(fileName => isMediaFile(fileName));
 
@@ -132,8 +131,8 @@
                 
                 if (isImage(fileName)) {
                     mediaContent = `
-                        <div class="file-name">${fileName}</div>
-                        <img src="${fileName}" alt="${fileName}" class="media-preview" onerror="this.style.display='none'">
+                    <img src="${fileName}" alt="${fileName}" class="media-preview" onerror="this.style.display='none'">
+                    <div class="file-name">${fileName}</div>
                     `;
                 } else if (isVideo(fileName)) {
                     mediaContent = `
