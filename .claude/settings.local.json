@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(script_update.cmd)",
-      "Bash(cmd /c:*)"
+      "Bash(cmd /c:*)",
+      "Bash(powershell:*)"
     ],
     "deny": [],
     "ask": []
