@@ -122,11 +122,10 @@
                 
                 const icon = getFileIcon(fileName);
                 const fileContent = `
-                    <span class="file-icon">${icon}</span>
-                    <div>
+                    <span style="display: inline-block;">
                         <div class="file-name">${fileName}</div>
                         ${isImage(fileName) ? `<img src="${fileName}" alt="${fileName}" class="image-preview" onerror="this.style.display='none'">` : ''}
-                    </div>
+                    </span>
                 `;
                 
                 listItem.innerHTML = fileContent;
