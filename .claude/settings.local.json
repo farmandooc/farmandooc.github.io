@@ -4,7 +4,8 @@
       "Bash(script_update.cmd)",
       "Bash(cmd /c:*)",
       "Bash(powershell:*)",
-      "Bash(del script_update.cmd)"
+      "Bash(del script_update.cmd)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -68,17 +68,22 @@
 <body>
     <div class="container">
         <h1>Contenido de la Carpeta</h1>
-        <button class="refresh-btn" onclick="loadFiles()">🔄 Actualizar</button>
+        <button class="refresh-btn" onclick="loadFiles()">ðŸ”„ Actualizar</button>
         <ul class="file-list" id="fileList">
-            <!-- Los archivos se cargarán dinámicamente aquí -->
+            <!-- Los archivos se cargarÃ¡n dinÃ¡micamente aquÃ­ -->
         </ul>
     </div>
 
     <script>
-        // Lista estática de archivos (se actualizará dinámicamente)
-        const files = [
-           
-        ];
+        // Lista estÃ¡tica de archivos (se actualizarÃ¡ dinÃ¡micamente)
+                        const files = [
+            'Admin_user.jpg',
+            'generate_file_list.cmd',
+            'index.html',
+            'script_update.cmd',
+            'Use_normal copy1.jpg',
+            'Use_normal.jpg'
+        ]; 
 
         function getFileIcon(fileName) {
             const ext = fileName.split('.').pop().toLowerCase();
@@ -87,19 +92,19 @@
                 case 'jpeg':
                 case 'png':
                 case 'gif':
-                    return '🖼️';
+                    return 'ðŸ–¼ï¸';
                 case 'html':
                 case 'htm':
-                    return '🌐';
+                    return 'ðŸŒ';
                 case 'cmd':
                 case 'bat':
-                    return '⚡';
+                    return 'âš¡';
                 case 'js':
-                    return '📜';
+                    return 'ðŸ“œ';
                 case 'css':
-                    return '🎨';
+                    return 'ðŸŽ¨';
                 default:
-                    return '📄';
+                    return 'ðŸ“„';
             }
         }
 
@@ -119,7 +124,7 @@
                 const icon = getFileIcon(fileName);
                 const fileContent = `
                     <span style="display: inline-block;">
-                        <div class="file-name">${fileName}</div>
+                        <span class="file-name">${fileName}</span>
                         ${isImage(fileName) ? `<img src="${fileName}" alt="${fileName}" class="image-preview" onerror="this.style.display='none'">` : ''}
                     </span>
                 `;
@@ -138,7 +143,7 @@
                 timestampDiv.style.textAlign = 'center';
                 timestampDiv.style.marginTop = '20px';
                 timestampDiv.style.color = '#666';
-                timestampDiv.textContent = `Última actualización: ${new Date().toLocaleString('es-ES')}`;
+                timestampDiv.textContent = `Ãšltima actualizaciÃ³n: ${new Date().toLocaleString('es-ES')}`;
                 document.querySelector('.container').appendChild(timestampDiv);
             }
         }
