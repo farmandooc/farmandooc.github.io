@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -131,8 +131,8 @@
                 
                 if (isImage(fileName)) {
                     mediaContent = `
-                        <div class="file-name">${fileName}</div>
-                        <img src="${fileName}" alt="${fileName}" class="media-preview" onerror="this.style.display='none'">
+                    <img src="${fileName}" alt="${fileName}" class="media-preview" onerror="this.style.display='none'">
+                    <div class="file-name">${fileName}</div>
                     `;
                 } else if (isVideo(fileName)) {
                     mediaContent = `
