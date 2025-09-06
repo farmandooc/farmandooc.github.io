@@ -13,5 +13,5 @@ call generate_file_list.cmd
 
 git add .
 git commit -m "Auto update - %fechaHora%"
-REM git push -u origin master
+git push -u origin master
 echo Script completado
