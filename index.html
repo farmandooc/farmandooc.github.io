@@ -86,6 +86,8 @@
             'Admin_user.jpg',
             'index.html',
             'script_update.cmd',
+            'servidor_local.cmd',
+            'servidor_node.cmd',
             'Use_normal copy1.jpg',
             'Use_normal.jpg'
         ];
@@ -116,6 +118,11 @@
 
             // Filtrar solo archivos multimedia
             const mediaFiles = files.filter(fileName => isMediaFile(fileName));
+
+            if (mediaFiles.length === 0) {
+                mediaGallery.innerHTML = '<li style="text-align: center; color: #666; padding: 40px;">No se encontraron archivos multimedia</li>';
+                return;
+            }
 
             mediaFiles.forEach(fileName => {
                 const listItem = document.createElement('li');
